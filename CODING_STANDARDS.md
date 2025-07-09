@@ -1,9 +1,12 @@
 # Frontend Coding Standards & Best Practices
 
-## 1. Introduction
+## Introduction
 
 ### Purpose of this document
 This document outlines the coding standards, best practices, and conventions to be followed for all frontend development at our company. The goal is to ensure consistency, maintainability, and quality across our projects.
+
+### Importance of following code standards
+Adhering to code standards and best practices is crucial not only for team collaboration but also for personal growth as a developer. Consistent coding habits improve your ability to write clean, maintainable code, making it easier to debug and enhance features over time. By following these guidelines, you build a strong foundation for producing high-quality work, fostering confidence in your skills, and earning trust from your peers through reliable, readable contributions.
 
 ### Target audience
 This document is intended for all team members involved in frontend development, including new developers joining the team.
@@ -11,7 +14,19 @@ This document is intended for all team members involved in frontend development,
 ### Scope
 These standards apply to all frontend projects built with the following stack: Next.js, React, TypeScript, TanStack Query, Redux, Tailwind CSS, Axios, and WebSockets.
 
-## 2. Project Structure
+### Quick Navigation  
+1. [Project Structure](#2-project-structure)  
+2. [Code Style & Quality](#3-code-style--quality)  
+3. [State Management](#4-state-management)  
+4. [Data Fetching](#5-data-fetching)  
+5. [Styling Guidelines](#6-styling-guidelines)  
+6. [Internationalization (i18n)](#7-internationalization-i18n)  
+7. [Asset Management](#8-asset-management)  
+8. [Performance Best Practices](#9-performance-best-practices)  
+9. [Git & GitHub Workflow](#10-git--github-workflow)  
+10. [Recommended Libraries & Tools](#11-recommended-libraries--tools)
+
+## 1. Project Structure
 
 ### Folder organization
 Our project follows the Next.js App Router structure. Key directories include:
@@ -26,14 +41,13 @@ Our project follows the Next.js App Router structure. Key directories include:
 -   `components/`: For shared React components.
     -   `components/forms/`: For form-related components.
     -   `components/guards/`: For route protection components.
-    -   `components/models/`: For modal components.
     -   `components/shared/`: For miscellaneous shared components.
 -   `lib/`: For libraries, helpers, and configurations.
     -   `lib/configs/`: For configurations like Axios and Next-Auth.
     -   `lib/constants/`: For application-wide constants.
     -   `lib/enums/`: For enums and project Routes and backend Endpoint.
     -   `lib/hooks/`: For custom React hooks.
-    -   `lib/Internationalization/`: For handling internationalization.
+    -   `lib/locales/`: For handling localization.
     -   `lib/providers/`: For React context providers.
     -   `lib/schemas/`: For Zod validation schemas.
     -   `lib/store/`: For Redux Toolkit store setup.
@@ -45,16 +59,19 @@ Our project follows the Next.js App Router structure. Key directories include:
     -   `public/fonts/`: fonts.
 
 ### Naming conventions
--   **Components:** `PascalCase` (e.g., `MyComponent.tsx`)
--   **Functions/Variables:** `camelCase` (e.g., `myFunction`, `myVariable`)
--   **Files:** `kebab-case` for pages and routes (e.g., `my-page/page.tsx`), `PascalCase` for components.
--   **Hooks:** `use` prefix (e.g., `useCustomHook.ts`)
+- **Components:** PascalCase (e.g., MyComponent.tsx)
+- **Functions/Variables:** camelCase (e.g., myFunction, myVariable)
+- **Files:** kebab-case for pages and routes (e.g., my-page/page.tsx), PascalCase for components.
+- **Folders:** kebab-case (e.g., login-form/, user-profile/)
+- **Hooks:** use prefix (e.g., useCustomHook.ts)
+- **Types & Interfaces:** PascalCase (e.g., User, AuthPayload, UserProfileProps)
+- **Constants:** SCREAMING_SNAKE_CASE (e.g., API_BASE_URL, MAX_RETRY_COUNT)
 
 ### Guidelines on file and component sizes
 -   **One component per file:** Each React component should be in its own file.
--   **Keep components small:** Aim for components to be around 200-250 lines of code. If a component grows too large, consider breaking it down into smaller, more manageable components.
+-   **Keep components small:** Aim for components to be around 250-300 lines of code. If a component grows too large, consider breaking it down into smaller, more manageable components.
 
-## 3. Code Style & Quality
+## 2. Code Style & Quality
 
 ### TypeScript best practices
 -   **Strict mode:** Our `tsconfig.json` has `"strict": true` enabled. Adhere to strict type-checking rules.
