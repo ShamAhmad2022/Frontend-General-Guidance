@@ -15,16 +15,16 @@ This document is intended for all team members involved in frontend development,
 These standards apply to all frontend projects built with the following stack: Next.js, React, TypeScript, TanStack Query, Redux, Tailwind CSS, Axios, and WebSockets.
 
 ### Quick Navigation  
-1. [Project Structure](#2-project-structure)  
-2. [Code Style & Quality](#3-code-style--quality)  
-3. [State Management](#4-state-management)  
-4. [Data Fetching](#5-data-fetching)  
-5. [Styling Guidelines](#6-styling-guidelines)  
-6. [Internationalization (i18n)](#7-internationalization-i18n)  
-7. [Asset Management](#8-asset-management)  
-8. [Performance Best Practices](#9-performance-best-practices)  
-9. [Git & GitHub Workflow](#10-git--github-workflow)  
-10. [Recommended Libraries & Tools](#11-recommended-libraries--tools)
+1. [Project Structure](#1-project-structure)  
+2. [Code Style & Quality](#2-code-style--quality)  
+3. [State Management](#3-state-management)  
+4. [Data Fetching](#4-data-fetching)  
+5. [Styling Guidelines](#5-styling-guidelines)  
+6. [Internationalization (i18n)](#6-internationalization-i18n)  
+7. [Asset Management](#7-asset-management)  
+8. [Performance Best Practices](#8-performance-best-practices)  
+9. [Git & GitHub Workflow](#9-git--github-workflow)  
+10. [Recommended Libraries & Tools](#10-recommended-libraries--tools)
 
 ## 1. Project Structure
 
