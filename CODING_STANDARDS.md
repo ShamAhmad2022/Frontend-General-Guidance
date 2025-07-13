@@ -25,6 +25,7 @@ These standards apply to all frontend projects built with the following stack: N
 8. [Performance Best Practices](#8-performance-best-practices)  
 9. [Git & GitHub Workflow](#9-git--github-workflow)  
 10. [Recommended Libraries & Tools](#10-recommended-libraries--tools)
+11. [Other Considerations](#11-other-considerations)
 
 ## 1. Project Structure
 
