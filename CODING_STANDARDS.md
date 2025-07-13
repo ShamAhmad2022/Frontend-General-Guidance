@@ -101,7 +101,7 @@ Please configure your editor to format on save.
 -   Prettier - Code formatter (`esbenp.prettier-vscode`)
 -   Tailwind CSS IntelliSense (`bradlc.vscode-tailwindcss`)
 
-## 4. State Management
+## 3. State Management
 
 ### When to use Redux vs. local state or TanStack Query
 -   **Local State (`useState`, `useReducer`):** For component-specific state that doesn't need to be shared.
@@ -117,23 +117,23 @@ Follow the standard Redux Toolkit conventions for creating slices, actions, and 
 ### Use of middleware
 We use Redux Toolkit, which includes `redux-thunk` by default for async actions.
 
-## 5. Data Fetching
+## 4. Data Fetching
 
 ### Axios setup
 An Axios instance is configured in `lib/configs/axios/client.ts`. This instance should be used for all HTTP requests. Interceptors can be added here for handling things like authentication tokens.
 
 ### Usage of TanStack Query
--   **Query Keys:** Use descriptive and unique query keys. A good practice is to use an array with the entity name and any parameters (e.g., `['patients', patientId]`).
+-   **Query Keys:** Use descriptive and unique query keys. A good practice is to use an array with the entity name and any parameters (if needed) (e.g., `['patients', patientId]`).
 -   **Caching Strategy:** Rely on TanStack Query's default caching strategy. Configure `staleTime` and `cacheTime` as needed for specific queries.
 
 ### When to use WebSockets
 Use WebSockets for features that require real-time, bidirectional communication, such as live notifications or chat.
 
-## 6. Styling Guidelines
+## 5. Styling Guidelines
 
 ### Tailwind CSS usage rules
 -   **No inline styles:** Avoid using the `style` attribute on components. Use Tailwind utility classes instead.
--   **Consistent spacing:** Use the spacing values defined in the Tailwind theme.
+-   **Consistent spacing:** Use the spacing values defined in the Tailwind theme (padding, margin, width, etc..).
 
 ### Use of utility classes vs. component extraction (@apply)
 Prefer using utility classes directly in your JSX. Use `@apply` sparingly, and only for extracting common component styles into a CSS file when necessary.
@@ -141,13 +141,13 @@ Prefer using utility classes directly in your JSX. Use `@apply` sparingly, and o
 ### Custom theme usage
 Our custom theme is defined in `tailwind.config.ts`. It includes custom colors, screens, and other theme values. Always use these theme values to maintain consistency.
 
-## 7. Internationalization (i18n)
+## 6. Internationalization (i18n)
 
 ### Tool used
 We use a custom i18n solution built into the Next.js app structure, located in `lib/locales/`.
 
 ### Folder structure for translations
-Translation files are located in `lib/locales/` (e.g., `en.ts`, `ar.ts`).
+Translation files are located in `lib/locales/` (`en.ts` and `ar.ts`).
 
 ### Rules for dynamic translation keys
 Avoid constructing translation keys dynamically at runtime.
@@ -155,7 +155,7 @@ Avoid constructing translation keys dynamically at runtime.
 ### Avoiding hardcoded strings
 All user-facing strings must be added to the translation files and accessed via the i18n hooks/helpers.
 
-## 8. Asset Management
+## 7. Asset Management
 
 ### Image optimization
 Use the `next/image` component for all images to get automatic optimization. Prefer SVG for icons and logos where possible.
@@ -166,43 +166,53 @@ We use `@iconify/react` for icons.
 ### File naming and folder organization
 Organize assets logically within the `public/` directory.
 
-## 9. Performance Best Practices
+## 8. Performance Best Practices
 
 ### Lazy loading
 -   **Components:** Use `next/dynamic` to lazy-load components that are not needed on the initial page load.
 -   **Images:** The `next/image` component handles lazy loading of images by default.
 
 ### Debouncing/throttling
-Use libraries like `use-debounce` for expensive operations that are triggered by frequent events (e.g., search input).
+Use libraries like `use-debounce` for expensive operations that are triggered by frequent events (e.g. search input).
 
 ### Memoization
 Use `React.memo`, `useMemo`, and `useCallback` to prevent unnecessary re-renders, but only after profiling and identifying performance bottlenecks.
 
-## 10. Git & GitHub Workflow
+## 9. Git & GitHub Workflow
 
 ### Branching strategy
 -   `main`: Production-ready code.
 -   `develop`: Integration branch for features.
--   `feature/...`: For new features.
 -   `bugfix/...`: For bug fixes.
--   `hotfix/...`: For urgent production fixes.
 
 ### Commit message style
-Follow the [Conventional Commits](https://www.conventionalcommits.org/) specification.
+Write clear, concise, and descriptive commit messages that summarize the changes made in the present tense, e.g., "Enable lazy loading for images to improve performance."
 
 ### PR process
--   All PRs must be reviewed and approved by at least one other team member.
+-   All PRs must be reviewed and approved by the leader.
 -   PRs should have a clear description of the changes.
 -   Ensure all CI checks are passing before merging.
 
-## 11. Recommended Libraries & Tools
+## 10. Recommended Libraries & Tools
 
 ### Libraries for consistency
 -   `zod`: For schema validation.
 -   `react-hook-form`: For managing forms.
--   `clsx`: For conditionally joining class names.
+-   `clsx`: For conditionally joining class names (or you can use `cn` from HeroUI).
 
 ### Developer tools
 -   React DevTools
 -   Redux DevTools
--   VSCode extensions mentioned in section 3.
+-   Tanstack Devtools (ReactQuery Devtools)
+-   VSCode extensions mentioned in section 2.
+
+## 11. Other Considerations
+
+- Remove `console.log` statements before deploying:
+  Debug logs can clutter the browser console, reveal internal data, and affect performance. Clean them up to maintain a polished production environment.
+
+- Use semantic HTML tags:
+  Semantic elements like `<header>`, `<main>`, `<section>`, and `<footer>` enhance accessibility, improve SEO, and make your markup more meaningful and maintainable.
+
+- Use unique keys when rendering lists:
+  Avoid using only the index as a key when mapping over long or dynamic arrays. Instead, combine it with a unique identifier (like an ID) to ensure consistent rendering and prevent UI glitches.
