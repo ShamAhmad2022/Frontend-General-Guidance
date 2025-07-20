@@ -7,7 +7,7 @@ Welcome to the team! This guide will help you get up to speed with our frontend 
 2. [Project Structure](#project-structure)
 3. [Main Packages & Libraries](#main-packages--libraries)
 4. [Hooks & Patterns](#hooks--patterns)
-5. [Shared, reusable and Custom Code](#shared-reusable-and-custom-code)
+5. [Shared, Reusable and Custom Code](#shared-reusable-and-custom-code)
 6. [Others](#others)
 
 ## Getting Started
@@ -107,7 +107,7 @@ This hook is used to manage file uploads. It returns the following properties:
 
 These hooks are used to manage our WebSocket connections for real-time chat features. They handle connecting to the server, sending and receiving messages, and managing the state of the chat rooms.
 
-## Shared, reusable and Custom Code
+## Shared, Reusable and Custom Code
 
 We have a number of reusable components and utility functions that you should be aware of.
 
