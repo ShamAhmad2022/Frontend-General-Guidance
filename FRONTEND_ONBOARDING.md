@@ -1,6 +1,14 @@
 # Frontend Development Onboarding Guide
 
-Welcome to the team! This guide will help you get up to speed with our frontend development process. All of the projects are built with Next.js and Vite React, so the following will cover them.
+Welcome to the team! This guide will help you get up to speed with our frontend development process. Our projects are primarily built using Next.js and Vite with React, so this document will provide you with the essential information to get started.
+
+### Quick Navigation
+1. [Getting Started](#getting-started)
+2. [Project Structure](#project-structure)
+3. [Main Packages & Libraries](#main-packages--libraries)
+4. [Hooks & Patterns](#hooks--patterns)
+5. [Shared, reusable and Custom Code](#shared-reusable-and-custom-code)
+6. [Others](#others)
 
 ## Getting Started
 
@@ -34,13 +42,13 @@ Our Next.js application follows a standard structure. Here's an overview of the 
   - `app/[locale]/`: For internationalization.
   - `app/[locale]/(auth)/`: For authentication-related pages.
   - `app/[locale]/(core)/`: For core application pages.
-  - `app/[locale]/(guest)/`: //provide description.
+  - `app/[locale]/(guest)/`: For pages accessible to unauthenticated (guest) users.
   - `app/[locale]/(sharable)/`: For sharable pages.
   2. `app/api/`: This directory contains all of our API routes.
 - `components/`: This directory contains all of our reusable React components and can be splitted to the following:
   - `components/forms/`: For form-related components.
   - `components/guards/`: For route protection components.
-  - `components/shared/`: For miscellaneous shared components.
+  - `components/shared/`: For shared components.
 - `lib/`: This directory contains all of our shared code, including hooks, utility functions, and constants, and can be splitted to the following:
     -   `lib/configs/`: For configurations like Axios and Next-Auth.
     -   `lib/constants/`: For application-wide constants.
@@ -52,7 +60,7 @@ Our Next.js application follows a standard structure. Here's an overview of the 
     -   `lib/store/`: For Redux Toolkit store setup.
     -   `lib/types/`: For TypeScript type definitions.
     -   `lib/style/`: for CSS and custom styles.
-    -   `lib/utils/`: For utility and helper functions.F
+    -   `lib/utils/`: For utility and helper functions.
 - `public/`: This directory contains all of our static assets, such as images and fonts.
 
 ## Main Packages & Libraries
@@ -66,7 +74,9 @@ We use a variety of external libraries to help us build our application. Here ar
 - **HeroUI:** A React UI library for building beautiful and accessible user interfaces.
 - **Axios:** A promise-based HTTP client for the browser and Node.js.
 - **NextAuth.js:** An authentication library for Next.js applications.
-- **Zod:** A TypeScript-first schema declaration and validation library.
+- **Zod:** A TypeScript-first schema declaration and validation library, used along with useForm hook.
+- **useForm hook:** A hook for managing form state and validation.
+- **Iconify:** A library for using icons.
 
 ## Hooks & Patterns
 
@@ -82,23 +92,6 @@ This hook is used to manage internationalization and navigation. It returns the 
 - `navigate`: A function to navigate to a new page.
 - `currentRout`: The current route.
 
-**Example:**
-
-```tsx
-import { useLocale } from "@/lib/hooks";
-
-function MyComponent() {
-  const { t, locale, toggleLocale } = useLocale();
-
-  return (
-    <div>
-      <h1>{t.welcomeMessage}</h1>
-      <p>Current locale: {locale}</p>
-      <button onClick={() => toggleLocale()}>Switch Locale</button>
-    </div>
-  );
-}
-```
 
 ### `useUploadFile`
 
@@ -110,62 +103,43 @@ This hook is used to manage file uploads. It returns the following properties:
 - `view`: A data URL of the selected file.
 - `setFile`: A function to manually set the file.
 
-**Example:**
-
-```tsx
-import { useUploadFile } from "@/lib/hooks";
-
-function MyComponent() {
-  const { InputComponent, file, view } = useUploadFile({ type: "image" });
-
-  return (
-    <div>
-      <InputComponent>
-        <button>Upload Image</button>
-      </InputComponent>
-      {view && <img src={view} alt="Preview" />}
-    </div>
-  );
-}
-```
-
 ### `useChatRoomSocket` & `useRoomsSocket`
 
 These hooks are used to manage our WebSocket connections for real-time chat features. They handle connecting to the server, sending and receiving messages, and managing the state of the chat rooms.
 
-## Custom Code
+## Shared, reusable and Custom Code
 
 We have a number of reusable components and utility functions that you should be aware of.
 
 ### Reusable Components
 
-You can find our reusable components in the `components/shared` directory. Some of the most important ones include:
+You can find our reusable components in the `components` directory at the root. Some of the most important ones include:
 
-- `CollapsibleText`: A component for displaying text that can be expanded and collapsed.
-- `ImagePreviewModal`: A modal for previewing images.
+- `SharedText`: A component for displaying text with different variants.
 - `LoadingSpinner`: A component for displaying a loading spinner.
-- `NotFoundPage`: A component for displaying a "not found" page.
-- `Portal`: A component for rendering children into a new DOM node.
-- `SpecialAvatar`: A component for displaying user avatars.
+- `MainButton`: A primary button for main actions.
+- `SecondaryButton`: A secondary button for alternative actions.
+- `SharedModal`: A sharable modal with different properties.
 
 ### Utility Functions
 
 You can find our utility functions in the `lib/utils` directory. Some of the most important ones include:
 
-- `cryptoStorage`: A utility for storing and retrieving data from local storage in an encrypted format.
-- `dateManipulators`: A set of functions for working with dates.
 - `isRTL`: A function to check if the current locale is right-to-left.
 - `stringHelpers`: A set of functions for working with strings.
+- `date-format`: A set of functions for working with and reformatting date and time.
 
-## Other
+## Others
 
 ### Development Environment Tips
 
-- **Linting and Formatting:** We use ESLint and Prettier to enforce a consistent code style. You can run the following commands to lint and format your code:
+**Linting and Formatting:** We use ESLint and Prettier to enforce a consistent code style. You can run the following commands to lint and format your code:
   ```bash
   npm run lint
   npm run format
   ```
-- **Browser Extensions:** We recommend installing the following browser extensions to help with development:
-  - [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
-  - [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
+### Starting a new project
+To save time on setup and package installation, it is recommended to clone a template from the following repository when starting a new project: [https://github.com/ShamAhmad2022/nextjs-app-template](https://github.com/ShamAhmad2022/nextjs-app-template)
+
+### Coding Standards & Best Practices
+It is recommended to have a look at the following to have a general idea of the coding standards and best practices that we follow: [https://github.com/ShamAhmad2022/Frontend-General-Guidance/blob/main/CODING_STANDARDS.md](https://github.com/ShamAhmad2022/Frontend-General-Guidance/blob/main/CODING_STANDARDS.md)

@@ -36,7 +36,7 @@ Our project follows the Next.js App Router structure. Key directories include:
     -   `app/[locale]/`: For internationalization.
     -   `app/[locale]/(auth)/`: For authentication-related pages.
     -   `app/[locale]/(core)/`: For core application pages.
-    -   `app/[locale]/(guest)/`: //provide description.
+    -   `app/[locale]/(guest)/`:  For pages accessible to unauthenticated (guest) users.
     -   `app/[locale]/(sharable)/`: For sharable pages.
     -   `app/api/`: For API routes.
 -   `components/`: For shared React components.
@@ -86,6 +86,24 @@ Our project follows the Next.js App Router structure. Key directories include:
 
 ### ESLint rules overview
 We use ESLint with `next/core-web-vitals` and `@typescript-eslint/recommended`. Key rules are defined in `.eslintrc.cjs`. Please ensure your editor is configured to show ESLint errors and warnings.
+
+### The Barrel File Pattern (`index.ts`)
+
+You will frequently encounter `index.ts` at the root of every folder (also known as "barrel files"). The purpose of these files is to re-export multiple modules from a single, convenient module. This practice helps aiming for simplified and Cleaner Imports, Easier Refactoring and Clear Public API for Directories
+
+**Before (Without Barrel File):**
+
+```typescript
+import { PrimaryButton } from "@/components/static/buttons/PrimaryButton";
+import { TextInput } from "@/components/forms/TextInput";
+import { PostBox } from "@/components/posts/PostCard";
+```
+
+**After (With Barrel File):**
+  ```typescript
+  import { PrimaryButton, TextInput, PostBox } from "@/components";
+  ```
+
 
 ### Prettier formatting rules
 Code formatting is handled by Prettier. Our configuration (`.prettierrc`) enforces:
